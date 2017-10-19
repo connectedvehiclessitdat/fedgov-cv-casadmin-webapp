@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>USDOT Account Registration Form</title>
+	
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/fontawesome/4.1.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css"/>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	
+	<script src="https://cas.connectedvcs.com/private-resources-non-cas/js/casadmin-webapp-keys.js"></script>
+	<script src="external/jquery.min.js"></script>
+	<script src="external/bootstrap.min.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/main.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script>
+	<script type="text/javascript" src="js/validator.js"></script>
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#"><img class="headerimg" src ="img/usdot.png">&nbsp;Connected Vehicles Account Registration</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3 col-xs-8 col-xs-offset-2 col-md-offset-1">
+        <h3>Account Request Form</h3>
+        <p><font color="red">
+        Accounts are available to USDOT employees and those operating under a USDOT contract or agreement.
+        </font><p>        
+        <p>Complete and submit the following request form in order to gain access to the Connected Vehicles UIs.
+            An email will be sent to an administrator; please allow time for approval.</p>
+    </div>
+    <div class="col-xs-8 col-md-4 col-xs-offset-2 col-md-offset-0">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form role="form"  id="registrationForm">
+                    <div class="form-group">
+                        <label for="email">Email Address:</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Password:</label>
+                        <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Enter password">
+                    </div>
+                    <div class="form-group">
+                        <label for="pwdB">Reenter Password:</label>
+                        <input type="password" class="form-control" name="pwdB" id="pwdB" placeholder="Enter password">
+                    </div>
+                    <div class="form-group">
+                        <label for="fname">First Name:</label>
+                        <input type="text" class="form-control" name="fname" id="fname" placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Last Name:</label>
+                        <input type="text" class="form-control" name="lname" id="lname" placeholder="Last Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="cname">Company Name:</label>
+                        <input type="text" class="form-control" name="cname" id="cname" placeholder="Company Name">
+                    </div>
+                        <label for="cname">USDOT Contract or Agreement:</label>
+                        <input type="text" class="form-control" name="contract" id="contract" placeholder="USDOT Contract or Agreement">
+                    </div>                        
+                    <div id="captcha" class="form-group">
+                    	<label for="cname">CAPTCHA:</label>
+                    </div>
+                    <div class="form-group">
+                        <div class="text-center">
+                            <input id="submitButton" type="button" class="btn btn-primary" value="Submit" onclick="RequestAccount();"/>
+                            <input id="resetButton" type="reset" class="btn btn-default" value="Reset"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+

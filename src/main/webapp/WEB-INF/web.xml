@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+        http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<display-name>Connected Vehicle SDW Viewer Web Application</display-name>
+
+	<servlet>
+    	<servlet-name>Jersey Web Application</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>com.sun.jersey.config.property.packages</param-name>
+            <param-value>gov.usdot.cv.service.rest</param-value>
+        </init-param>
+        <init-param>
+        	<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+        	<param-value>true</param-value>
+    	</init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    
+    <servlet>
+    	<servlet-name>Initialization Servlet</servlet-name>
+        <servlet-class>gov.usdot.cv.service.servlet.InitServlet</servlet-class>
+        <init-param>
+        	<!--
+        		The data request handler that is used to service the data request.
+        	-->
+            <param-name>data.request.handler</param-name>
+            <!-- 
+            <param-value>gov.usdot.cv.service.handler.sim.SimTravelerInformationDataRequestHandler</param-value> 
+            -->
+            <param-value>gov.usdot.cv.service.handler.TravelerInformationDataRequestHandler</param-value>
+        </init-param>
+        <init-param>
+        	<param-name>warehouse.hostname</param-name>
+        	<param-value>162.242.238.76</param-value>
+        </init-param>
+        <init-param>
+        	<param-name>warehouse.port</param-name>
+        	<param-value>46754</param-value>
+        </init-param>
+        <init-param>
+        	<!-- 
+        		Comma separate list of response ports. Each port represent a separate
+        		data request handler thread. 
+        	-->
+        	<param-name>response.ports</param-name>
+        	<param-value>46761</param-value>
+        </init-param>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Jersey Web Application</servlet-name>
+        <url-pattern>/query/*</url-pattern>
+    </servlet-mapping>
+<!--
+	<filter>
+		<filter-name>CAS Authentication Filter</filter-name>
+		<filter-class>org.jasig.cas.client.authentication.AuthenticationFilter</filter-class>
+		<init-param>
+			<param-name>casServerLoginUrl</param-name>
+			<param-value>https://ec2-107-20-108-255.compute-1.amazonaws.com/accounts/login</param-value>
+		</init-param>
+		<init-param>
+			<param-name>serverName</param-name>
+			<param-value>https://ec2-54-242-115-80.compute-1.amazonaws.com:443</param-value>
+		</init-param>
+	</filter>
+
+	<filter>
+		<filter-name>CAS Validation Filter</filter-name>
+		<filter-class>org.jasig.cas.client.validation.Cas20ProxyReceivingTicketValidationFilter</filter-class>
+		<init-param>
+			<param-name>casServerUrlPrefix</param-name>
+			<param-value>https://ec2-107-20-108-255.compute-1.amazonaws.com/accounts/</param-value>
+		</init-param>
+		<init-param>
+			<param-name>serverName</param-name>
+			<param-value>https://ec2-54-242-115-80.compute-1.amazonaws.com:443</param-value>
+		</init-param>
+	</filter>
+
+	<filter>
+		<filter-name>CAS HttpServletRequest Wrapper Filter</filter-name>
+		<filter-class>org.jasig.cas.client.util.HttpServletRequestWrapperFilter</filter-class>
+	</filter>
+
+	<filter>
+		<filter-name>CAS Assertion Thread Local Filter</filter-name>
+		<filter-class>org.jasig.cas.client.util.AssertionThreadLocalFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>CAS Authentication Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>CAS Validation Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>CAS HttpServletRequest Wrapper Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>CAS Assertion Thread Local Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+-->
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+</web-app>
